@@ -12,36 +12,42 @@ using OpenQA.Selenium.Firefox;
 using System.IO;
 using Newtonsoft.Json;
 using BrowserAutomation.Entities;
+using BrowserAutomation.ExtentReportManager;
 
 namespace BrowserAutomation
 {
-    public class TestInitialize
+    public class TestInitialize : IDisposable
     {
         //Declaring Global Variables
         public IWebDriver driver;
-        public static ExtentTest test;
-        public static ExtentReports extent;
 
         //Initializing testData a null value
-        public Input testData = null;
+        public Inputs testData = null;
 
+        
 
         public TestInitialize(string jsonName)
         {
 
             //Defining the Path for Input JSON File and reading the Json Data and assigning to String variable
-
+            ExtentReportManager.ExtentReportManager.getInstance.ExtentStart();
             string executingPath = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString();
-            string testDataPath = Path.Combine(executingPath, "TestData", jsonName + ".json");
+            string testDataPath = Path.Combine(executingPath, "TestData", "SearchInput" + ".json");
             
             StreamReader streamReader = new StreamReader(testDataPath);
             string readData = streamReader.ReadToEnd();
 
             //Deserializing the read Data
-            testData = JsonConvert.DeserializeObject<Input>(readData);
+            testData = JsonConvert.DeserializeObject<Inputs>(readData);
 
             //Providing a Switch condition for Browser which has been provided as input in JSON
-            switch (testData.Browser.ToLower())
+            
+
+        }
+
+        public void LaunchBrowser(string browserName)
+        {
+            switch (browserName.ToLower())
             {
                 case "chrome":
                     {
@@ -64,10 +70,15 @@ namespace BrowserAutomation
 
 
             }
-
         }
 
-
+        public void Dispose()
+        {
+            //ExtentReportManager.ExtentReportManager.getInstance().
+            ExtentReportManager.ExtentReportManager.getInstance.Flush();
+            if(driver != null)
+             driver.Close();
+        }
 
     }
 }

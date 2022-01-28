@@ -35,18 +35,18 @@
     <None Remove="Tests\" />
     <None Remove="TestData\GoogleInput.json" />
     <None Remove="TestData\BingInput.json" />
+    <None Remove="ExtentReportManager\" />
+    <None Remove="TestData\GoogleInput %28copy%29.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="PageObjects\" />
     <Folder Include="TestData\" />
     <Folder Include="Tests\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestData\GoogleInput.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TestData\BingInput.json">
+    <Content Include="TestData\SearchInput.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -54,5 +54,9 @@
     <None Update="TestData\BingInput.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Tests\GoogleSearchEngineTest %28copy%29.cs" />
+    <Compile Remove="Tests\BingSearchEngineTest.cs" />
   </ItemGroup>
 </Project>
