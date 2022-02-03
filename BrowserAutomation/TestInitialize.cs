@@ -74,10 +74,9 @@ namespace BrowserAutomation
 
         public void Dispose()
         {
-            //ExtentReportManager.ExtentReportManager.getInstance().
             ExtentReportManager.ExtentReportManager.getInstance.Flush();
             if(driver != null)
-             driver.Close();
+            driver.Close();
         }
 
     }

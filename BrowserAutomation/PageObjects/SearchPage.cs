@@ -35,12 +35,9 @@ namespace BrowserAutomation.PageObjects
 
             Actions actions = new Actions(_driver);
             actions.SendKeys(Keys.Enter).Build().Perform();
-
-
-
         }
 
-        public void waitForRelavantTestResults(string resultText, int timeOut, int maxTries)
+        public void waitForRelevantTestResults(string resultText, int timeOut, int maxTries)
         {
             for(int i =  0; i < maxTries; i++)
             {
@@ -55,8 +52,6 @@ namespace BrowserAutomation.PageObjects
         {
             return _driver.FindElements(By.XPath("//*[contains(.,'" + resultText + "')]")).Count;
         }
-
-
 
 
     }
