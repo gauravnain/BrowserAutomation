@@ -5,9 +5,8 @@ namespace BrowserAutomation.Entities
 {
     public class Inputs
     {
-        
-
-            public List<Input> InputList { get; set; }
+        //Converting the input in the form of List
+        public List<Input> InputList { get; set; }
         
     }
 }

@@ -37,6 +37,7 @@
     <None Remove="TestData\BingInput.json" />
     <None Remove="ExtentReportManager\" />
     <None Remove="TestData\GoogleInput %28copy%29.json" />
+    <None Remove="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -44,6 +45,7 @@
     <Folder Include="TestData\" />
     <Folder Include="Tests\" />
     <Folder Include="Managers\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestData\SearchInput.json">
@@ -58,5 +60,6 @@
   <ItemGroup>
     <Compile Remove="Tests\GoogleSearchEngineTest %28copy%29.cs" />
     <Compile Remove="Tests\BingSearchEngineTest.cs" />
+    <Compile Remove="Utilities\ScreenshotCapture.cs" />
   </ItemGroup>
 </Project>

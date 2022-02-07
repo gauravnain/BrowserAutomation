@@ -1,18 +1,24 @@
 ﻿{
   "InputList": [
     {
+      "execute": "Yes",
       "stepName": "Google Search On Chrome",
       "Browser": "Chrome",
       "URL": "http://www.google.com",
       "SearchText": "Fiserv",
-      "SearchResult": "Fiserv: Financial Services Technology, Mobile Banking"
+      "SearchResult": "Fiserv: Financial Services Technology, Mobile Banking",
+      "screenshotFOlderPath":  "\\Google\\Chrome"
+
     },
     {
+      "execute": "No",
       "stepName": "Bing Search On Chrome",
       "Browser": "Chrome",
       "URL": "http://www.bing.com",
       "SearchText": "Fiserv",
-      "SearchResult": "Financial Services Technology, Mobile Banking"
+      "SearchResult": "Financial Services Technology, Mobile Banking",
+      "screenshotFOlderPath": "\\Bing\\Chrome"
     }
+
   ]
 }
