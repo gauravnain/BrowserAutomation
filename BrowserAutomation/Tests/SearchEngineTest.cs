@@ -39,11 +39,13 @@ namespace BrowserAutomation
 
             foreach (var input in testData.InputList)
             {
-
+                //Creation of Test Node for Reports
                 var step = test.CreateNode(input.stepName);
+
+                //Validating a condition of execute flag if it is passed as Yes Test case will execute
                 if (input.execute.ToLower() == "yes")
                 {
-                    //var step = test.CreateNode(input.stepName);
+                    
                     try
                     {
 
@@ -77,15 +79,10 @@ namespace BrowserAutomation
                         */
 
 
-                        //Validating The Expected Result if positive returning "Result matched" else returnig "Result did not match"
-                        Assert.IsTrue(resultPage.GetRelevantSearchResultCount(input.SearchResult) > 0, "Result Not Found");
+                        //Validating The Expected Result if positive returning "Result matched" else returnig "Result not Found"
+                        Assert.IsTrue(resultPage.GetRelevantSearchResult(input.SearchResult) > 0, "Result Not Found");
                         step.Pass("Result Found");
-                        ScreenshotCapture screenCapture = new ScreenshotCapture(this.driver);
-                        string reportPath = ExtentReportManager.ExtentReportManager.reportpath;
-                        string resultsScreenSHotPath = Path.Combine(reportPath, input.screenshotFOlderPath, "Results");
-                        screenCapture.captureScreenshot(resultsScreenSHotPath);
-                        Thread.Sleep(2000);
-                        step.AddScreenCaptureFromPath(resultsScreenSHotPath + ".png");
+                        
                         
                     }
                     catch (Exception er)
@@ -99,6 +96,8 @@ namespace BrowserAutomation
                         driver.Close();
                     }
                 }
+
+                //If the execute flag value is other then Yes else block will be executed and it will display the value as test case skipped in reports
                 else
                 {
                     step.Skip("Skipped by Test Suite");

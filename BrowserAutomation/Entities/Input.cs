@@ -27,8 +27,6 @@ namespace BrowserAutomation.Entities
         //Declaring SearchResult parameter to pass the expected search as a result of input text provided
         public string SearchResult { get; set; }
 
-        public string screenshotFOlderPath { get; set; }
-
 
     }
 }
