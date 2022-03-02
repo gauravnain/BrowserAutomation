@@ -30,7 +30,7 @@ namespace BrowserAutomation.PageObjects
         }
 
         //Defining a generic XPath for search text box on different search engine like Google and Bing
-        string searchTextBox_XPath = "//input[(contains(@aria-label,'search') or contains(@aria-label,'Search') or contains(@title,'search')) and (@type='text' or @type='search')]";
+        string searchTextBox_XPath = "//input[contains(@aria-label,'Search') and @type='text']";
 
         //Defining instance of IWebElement
         IWebElement searchTextBox => _driver.FindElement(By.XPath(searchTextBox_XPath));
@@ -44,6 +44,6 @@ namespace BrowserAutomation.PageObjects
             actions.SendKeys(Keys.Enter).Build().Perform();
         }
 
-
+        
     }
 }

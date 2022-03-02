@@ -4,13 +4,13 @@ using OpenQA.Selenium;
 
 namespace BrowserAutomation.PageObjects
 {
-    public class ResultPage
+    public class ResultPageDuckDuckGo
     {
         //Creating instance of IWebDriver for output class
         IWebDriver _driver;
 
         //Initializing _driver with value of driver
-        public ResultPage(IWebDriver driver)
+        public ResultPageDuckDuckGo(IWebDriver driver)
         {
             _driver = driver;
         }
@@ -25,7 +25,7 @@ namespace BrowserAutomation.PageObjects
         //Declaring a method to search the output result
         public int GetRelevantSearchResult(string resultText)
         {
-            return _driver.FindElements(By.XPath("//a/h3[contains(text(),'" + resultText + "')]")).Count;
+            return _driver.FindElements(By.XPath("//h2/a[contains(text(),'" + resultText + "')]")).Count;
         }
     }
 }

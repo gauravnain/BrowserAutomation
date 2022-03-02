@@ -59,28 +59,17 @@ namespace BrowserAutomation
                         step.Log(Status.Info, "Go to Search Engine URL");
 
                         //Providing Input Text 
-                        SearchPage searchPage = new SearchPage(driver);
-                        searchPage.EnterTextInSearchBox(input.SearchText);
+                        NavigatingSearchPage searchPage = new NavigatingSearchPage(driver);
+                        searchPage.navigateToSearchPage(input.URL, input.SearchText);
 
+                        //Logging information about input text has been perfomed
+                        step.Log(Status.Info, "Provided input of text to be searched");
 
-                        //Logging information about what action has been performed
-                        step.Log(Status.Info, "Provided input of text to be Searched");
+                        //Navigating to Result Page as per user input and validating the output result
+                        NavigatingResultPage resultPage = new NavigatingResultPage(driver);
+                        resultPage.navigateToResultPage(input.URL, input.SearchResult);
 
-                        ResultPage resultPage = new ResultPage(driver);
-
-                        //Performing a wait in order to get result output
-                        resultPage.waitForRelevantTestResults(input.SearchResult);
-
-                        /* --- As suggested commenting out the code of if else condition validation and using Assert in place of it ----
-                        if (resultPage.GetRelevantSearchResultCount(input.SearchResult) > 0)
-                            step.Pass("Results found");
-                        else
-                            step.Fail("Result not found");
-                        */
-
-
-                        //Validating The Expected Result if positive returning "Result matched" else returnig "Result not Found"
-                        Assert.IsTrue(resultPage.GetRelevantSearchResult(input.SearchResult) > 0, "Result Not Found");
+                        //Logging the result as Pass if output result is found
                         step.Pass("Result Found");
                         
                         

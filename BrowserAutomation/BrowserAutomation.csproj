@@ -61,5 +61,8 @@
     <Compile Remove="Tests\GoogleSearchEngineTest %28copy%29.cs" />
     <Compile Remove="Tests\BingSearchEngineTest.cs" />
     <Compile Remove="Utilities\ScreenshotCapture.cs" />
+    <Compile Remove="MultiPageAbs.cs" />
+    <Compile Remove="PageObjects\NavigationResultClass.cs" />
+    <Compile Remove="PageObjects\NavigationSearchPage.cs" />
   </ItemGroup>
 </Project>
